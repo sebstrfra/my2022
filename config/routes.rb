@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :users, only: [ :show, :index ]
-  get 'users/:id/friendships', to: 'friendships#create'
+  post 'users/:id/friendships', to: 'friendships#create'
 
   resources :challenges, only: [ :new, :create, :index, :show ] do
     resources :challenge_users, only: [ :new, :create ]
