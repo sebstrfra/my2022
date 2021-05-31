@@ -3,4 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :challenges 
+  has_many :user_goals
+  has_many :challenge_users
+  has_many :challenges, through: :challenge_users
+  has_many :goals, through: :user_goals
+  has_many :friendships_as_asker, class_name: "Friendship", foreign_key: :asker_id
+  has_many :friendships_as_receiver, class_name: "Friendship", foreign_key: :receiver_id
 end
