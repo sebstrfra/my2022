@@ -4,4 +4,7 @@ class Challenge < ApplicationRecord
   has_many :users, through: :challenge_users
   has_many :goals
   has_many :user_goals, through: :goals
+
+  validates :name, presence: true
+  validates :end_date, presence: true
 end
