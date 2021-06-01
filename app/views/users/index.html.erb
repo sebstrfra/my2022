@@ -1,0 +1,35 @@
+<br><br>
+
+<div class="container">
+  <div>
+    <%= form_tag users_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a motivation buddy"
+      %>
+      <div class="text-center">
+        <%= submit_tag "Search", class:"btn btn-warning"%>
+      </div>
+      
+    <% end %>
+  </div>
+
+
+  <br><br>
+
+  <ul>
+    <% @users.each do |user| %>
+      <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h2><%= user.first_name %></h2>
+          <p><%= user.email %></p>
+        </div>
+      </div>
+      <br><br>
+    <% end %>
+  </ul>
+
+</div>
+
