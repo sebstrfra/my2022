@@ -99,7 +99,48 @@ puts "*** Now let's see, how everyone is performing... ***"
 
 puts "/// USER PROGRESS TO BE ADDED ///"
 
+puts "Let's build a second Challenge"
 
+puts "** Now let's build a challenge **"
+
+challenge2 = Challenge.new(name: "Summer Sports", description: "Let's get rid of our lockdown fat and in Shape for our September Holidays", start_date: "01.05.2021", end_date: "01.09.2021", user: User.all.sample)
+challenge2.save!
+puts "The challenge with the fancy name << #{challenge2.name} >> was created by #{challenge2.user.first_name}. It starts at #{challenge2.start_date} and ends at #{challenge2.end_date}."
+
+puts ""
+
+puts "** Let's see, which friends will be joining #{challenge2.user.first_name} for the challenge ***"
+
+ChallengeUser.create(challenge: challenge2, user: challenge2.user)
+
+rand(2...User.count).times do |iteration|
+  # find random user and add to challenge if not yet assigned
+  member = User.all.sample
+  # ChallengeUser.find_by(challenge: challenge1, user: member)
+  ChallengeUser.find_or_create_by(challenge: challenge2, user: member)
+  puts "#{member.first_name} joined the challenge"
+end
+
+
+puts ""
+
+puts "** Now let's add some GOALS to the challenge << #{challenge2.name} >>**"
+
+goal21 = Goal.new(challenge: challenge2, name: "Pushups", target_amount: rand(5000), unit: "times", goal_type: 1)
+goal21.save!
+puts "The goal << #{goal21.name} (#{goal21.target_amount} #{goal21.unit}) >> was added to the challenge."
+
+# add minmax
+
+goal22 = Goal.new(challenge: challenge2, name: "Running", target_amount: rand(500), unit: "km", goal_type: 1)
+goal22.save!
+puts "The goal << #{goal22.name} (#{goal22.target_amount} #{goal22.unit}) >> was added to the challenge."
+
+goal23 = Goal.new(challenge: challenge1, name: "Fasting (No food!)", target_amount: rand(30), unit: "days", goal_type: 2)
+goal23.save!
+puts "The goal << #{goal23.name} (#{goal23.target_amount} #{goal23.unit}) >> was added to the challenge."
+
+puts ""
 
 # date = challenge1.start_date
 # current_date = Date.Now
