@@ -1,0 +1,10 @@
+<h1>My Challenges</h1>
+
+<ul>
+  <% @challenge_users.each do |challenge_user| %>
+    <li><%= challenge_user.challenge.name %></li>
+    <% unless challenge_user.accepted %>
+      Pending request
+    <% end %>
+  <% end %>
+</ul>
