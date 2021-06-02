@@ -1,0 +1,43 @@
+<h1><%= @challenge.name %></h1>
+
+<h2>Participants</h2>
+  <ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.first_name %>
+    </li>
+  <% end %>
+  </ul>
+
+<h2><%= @days_left %> days left</h2>
+(ends at <%= @challenge.end_date %>)
+
+<br>
+<br>
+
+
+<h2>Your Goals</h2>
+  <ul>
+  <% @goals.each do |goal| %>
+    <li>
+      <h3><%= goal.name %></h3>
+      <p><strong><%= goal.target_amount %></strong> <%= goal.unit %> <%= goal.goal_type %><br>
+      <% goal_for_the_day = ((goal.target_amount.to_f / @challenge_duration.to_f) * @challenge_day)%>
+
+      As of today, you should be at: <%= goal_for_the_day.round(0) %> <%= goal.unit %> <%= goal.goal_type %></p>
+
+      <ul>
+      <% @users.each do |user| %>
+        <li>
+        <% user_amount_of_day = UserGoal.where(user: user, goal: goal)[0].current_amount %>
+        <% user_delta = user_amount_of_day - goal_for_the_day %>
+
+        <%= user.first_name %>: <%= user_amount_of_day%> <%= goal.unit %> (Δ <%= user_delta.round(0) %> <%= goal.unit %> )
+        </li>
+      <% end %>
+      </ul>
+      <br>
+      <br>
+    </li>
+  <% end %>
+  </ul>
