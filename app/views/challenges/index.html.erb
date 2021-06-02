@@ -1,10 +1,26 @@
-<h1>My Challenges</h1>
+<div class = container>
+  <h1>My Challenges</h1>
 
-<ul>
-  <% @challenge_users.each do |challenge_user| %>
-    <li><%= challenge_user.challenge.name %></li>
-    <% unless challenge_user.accepted %>
-      Pending request
+  <ul>
+    <% @challenge_users.each do |challenge_user| %>
+      <%= link_to challenge_path(challenge_user.challenge) do %>
+        <div class=challenge-active>
+
+          <li><%= challenge_user.challenge.name %></li>
+        </div>
+          <% unless challenge_user.accepted %>
+
+          <div class=challenge-pending>
+            Pending <%= challenge_user.challenge.name %>
+          </div>
+          <% end %>
+      <% end %>
+
     <% end %>
-  <% end %>
-</ul>
+
+    <div class="text-center">
+      <%= submit_tag "Create", class:"btn btn-warning"%>
+      <%= submit_tag "My friends", class:"btn btn-primary"%>
+    </div>
+  </ul>
+</div>
