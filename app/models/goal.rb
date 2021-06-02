@@ -9,5 +9,5 @@ class Goal < ApplicationRecord
   validates :unit, presence: true
   validates :goal_type, presence: true
 
-  enum goal_type: [:min, :max]
+  enum goal_type: [:min_amount, :max_amount]
 end

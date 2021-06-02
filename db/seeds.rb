@@ -75,23 +75,19 @@ puts ""
 
 puts "** Now let's add some GOALS to the challenge << #{challenge1.name} >>**"
 
-goal1 = Goal.new(challenge: challenge1, name: "Eat apples", target_amount: rand(150), unit: "pieces", goal_type: 1)
+goal1 = Goal.new(challenge: challenge1, name: "Eat apples", target_amount: rand(150), unit: "pieces", goal_type: :min_amount)
 goal1.save!
-puts "The goal << #{goal1.name} (#{goal1.target_amount} #{goal1.unit}) >> was added to the challenge."
+puts "The goal << #{goal1.name} (#{goal1.goal_type} #{goal1.target_amount} #{goal1.unit}) >> was added to the challenge."
 
 # add minmax
 
-goal2 = Goal.new(challenge: challenge1, name: "Play Codewars", target_amount: rand(75), unit: "hours", goal_type: 1)
+goal2 = Goal.new(challenge: challenge1, name: "Play Codewars", target_amount: rand(75), unit: "hours", goal_type: :min_amount)
 goal2.save!
-puts "The goal << #{goal2.name} (#{goal2.target_amount} #{goal2.unit}) >> was added to the challenge."
+puts "The goal << #{goal2.name} (#{goal2.goal_type} #{goal2.target_amount} #{goal2.unit}) >> was added to the challenge."
 
-goal3 = Goal.new(challenge: challenge1, name: "Smoke", target_amount: rand(100), unit: "ciggarettes", goal_type: 2)
+goal3 = Goal.new(challenge: challenge1, name: "Smoke", target_amount: rand(100), unit: "ciggarettes", goal_type: :max_amount)
 goal3.save!
-puts "The goal << #{goal3.name} (#{goal3.target_amount} #{goal3.unit}) >> was added to the challenge."
-
-puts ""
-
-puts "/// NO MIN-MAX-DISTINCTION FOR GOALS YET /// - need to fix that later"
+puts "The goal << #{goal3.name} (#{goal3.goal_type} #{goal3.target_amount} #{goal3.unit}) >> was added to the challenge."
 
 puts ""
 
@@ -126,19 +122,17 @@ puts ""
 
 puts "** Now let's add some GOALS to the challenge << #{challenge2.name} >>**"
 
-goal21 = Goal.new(challenge: challenge2, name: "Pushups", target_amount: rand(5000), unit: "times", goal_type: 1)
+goal21 = Goal.new(challenge: challenge2, name: "Pushups", target_amount: rand(5000), unit: "times", goal_type: :min_amount)
 goal21.save!
-puts "The goal << #{goal21.name} (#{goal21.target_amount} #{goal21.unit}) >> was added to the challenge."
+puts "The goal << #{goal21.name} (#{goal21.goal_type} #{goal21.target_amount} #{goal21.unit}) >> was added to the challenge."
 
-# add minmax
-
-goal22 = Goal.new(challenge: challenge2, name: "Running", target_amount: rand(500), unit: "km", goal_type: 1)
+goal22 = Goal.new(challenge: challenge2, name: "Running", target_amount: rand(500), unit: "km", goal_type: :min_amount)
 goal22.save!
-puts "The goal << #{goal22.name} (#{goal22.target_amount} #{goal22.unit}) >> was added to the challenge."
+puts "The goal << #{goal22.name} (#{goal22.goal_type} #{goal22.target_amount} #{goal22.unit}) >> was added to the challenge."
 
-goal23 = Goal.new(challenge: challenge1, name: "Fasting (No food!)", target_amount: rand(30), unit: "days", goal_type: 2)
+goal23 = Goal.new(challenge: challenge1, name: "Fasting (No food!)", target_amount: rand(30), unit: "days", goal_type: :min_amount)
 goal23.save!
-puts "The goal << #{goal23.name} (#{goal23.target_amount} #{goal23.unit}) >> was added to the challenge."
+puts "The goal << #{goal23.name} (#{goal23.goal_type} #{goal23.target_amount} #{goal23.unit}) >> was added to the challenge."
 
 puts ""
 
