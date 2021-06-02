@@ -1,0 +1,28 @@
+<% @goals.each do |goal| %>
+<%= goal.name %>
+<% end %>
+
+
+
+<div class="new-goal-form">
+    <h1>Create your Goal</h1>
+    <div class ="form-box">
+      <%= simple_form_for [@challenge, @goal] do |f| %>
+
+        <div class ="name">
+          <%= f.input :name %>
+        </div>
+
+        <div class ="target_amount">
+          <%= f.input :target_amount %>
+        </div>
+
+        <div class ="unit">
+          <%= f.input :unit %>
+        </div>
+
+          <%= f.button :submit, "Create", class: "my-button" %>
+
+      <% end %>
+    </div>
+  </div>

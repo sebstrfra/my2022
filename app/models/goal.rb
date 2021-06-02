@@ -7,5 +7,5 @@ class Goal < ApplicationRecord
   validates :name, presence: true
   validates :target_amount, presence: true
   validates :unit, presence: true
-  validates :goal_type, presence: true
+  # validates :goal_type, presence: true
 end
