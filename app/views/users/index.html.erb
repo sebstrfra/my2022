@@ -21,13 +21,13 @@
   <ul>
     <% @users.each do |user| %>
       <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <%= cl_image_tag user.photo.key %> 
         <div class="card-product-infos">
           <h2><%= user.first_name %></h2>
-          <p><%= user.email %></p>
+          <p><%= user.last_name %></p>
         </div>
+        <%= link_to "+", "#", class: "btn btn-ghost" %>
       </div>
-      <br><br>
     <% end %>
   </ul>
 
