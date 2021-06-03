@@ -1,26 +1,27 @@
-<div class = container>
-  <h1>My Challenges</h1>
+<div class="container">
 
-  <ul>
-    <% @challenge_users.each do |challenge_user| %>
-      <%= link_to challenge_path(challenge_user.challenge) do %>
-        <div class=challenge-active>
-
-          <li><%= challenge_user.challenge.name %></li>
-        </div>
-          <% unless challenge_user.accepted %>
-
-          <div class=challenge-pending>
-            Pending <%= challenge_user.challenge.name %>
-          </div>
+  <div class="content-challenge">
+    <h1>My Challenges</h1>
+    <div class="challenge-card">
+      <% @challenge_users.each do |challenge_user| %>
+        <%= link_to challenge_path(challenge_user.challenge) do %>
+          <% if challenge_user.accepted %>
+            <div class="challenge-active">
+              <p><%= challenge_user.challenge.name %></p>
+            </div>
+          <% else %>
+            <div class="challenge-pending">
+              <p>Pending <%= challenge_user.challenge.name %></p>
+            </div>
           <% end %>
+        <% end %>
       <% end %>
-
-    <% end %>
-
-    <div class="text-center">
-      <%= submit_tag "Create", class:"btn btn-warning"%>
-      <%= submit_tag "My friends", class:"btn btn-primary"%>
     </div>
-  </ul>
+  </div>
+  <div class="text-center">
+    <%= link_to "Create", new_challenge_path, class:"btn btn-warning"%>
+    <%= link_to "My friends", users_path, class:"btn btn-primary"%>
+  </div>
+
 </div>
+

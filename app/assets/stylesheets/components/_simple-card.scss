@@ -1,55 +1,54 @@
-.container {
+.content-challenge {
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
-h1 {
-  font-weight: 600;
-  font-size: 24px;
-  color: #235173;
-  margin-top: 5%;
-}
-
-ul {
-  list-style-type: none;
+.challenge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align:center;
+  justify-content: center;
 }
 
 .challenge-active {
+  display: flex;
+  align-items: center;
   background: #2DB9C8;
   border-radius: 6px;
   color: white;
   width: 343px;
   height: 84px;
-  text-align: center;
-  margin: 17px 17px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px
+  justify-content: space-around;
+
+  p {
+    margin: 0 !important;
+  }
 }
 
 .challenge-pending {
+  display: flex;
+  align-items: center;
   background: #F3B64B;
   border-radius: 6px;
   color: white;
   width: 343px;
   height: 84px;
-  text-align: center;
-  margin: 17px 17px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px
+  justify-content: space-around;
+  margin-top: 20px;
+
+  p {
+    margin: 0 !important;
+  }
 }
 
 .text-center {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .btn {
-    margin: 17px 17px;
-    border-radius: 6px;
-  }
 }
+
+
+
+
+
