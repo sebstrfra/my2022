@@ -8,6 +8,7 @@ class GoalsController < ApplicationController
 
   def create
     @challenge = Challenge.find(params[:challenge_id])
+    @goals = @challenge.goals
     @goal = Goal.new(goal_params)
     @goal.challenge = @challenge
     if @goal.save
