@@ -1,0 +1,45 @@
+.challenge-header {
+  // border-style: solid;
+  text-align: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.challenge-user-row {
+  display: flex;
+  justify-content: center;
+
+  img {
+    margin-left: 10px;
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.challenge-flexbox-center {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+
+}
+
+.challenge-small-text {
+  font-size: 9px;
+}
+
+.number-with-orange-background {
+    margin: 0;
+    background-color: #F3B64B;
+    padding: 0px 5px;
+    border-radius: 5px;
+    margin: 0 5px 0 0;
+  }
+
+.challenge-h2 {
+  font-weight: 600;
+  font-size: 18px;
+  color: #235173;
+  margin-top: 5%;
+}
