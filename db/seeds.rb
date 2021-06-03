@@ -6,40 +6,56 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+UserGoal.destroy_all
 Goal.destroy_all
 ChallengeUser.destroy_all
 Challenge.destroy_all
+Friendship.destroy_all
 User.destroy_all
 
 
 
 puts "** Let's create some users for my2022 **"
 
+file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1617603749/da22yjwdbfkl4uq8cqvy.jpg')
 jonas = User.new(email: "jonas@jonas.com", password: "123456", first_name: "Jonas", last_name: "Wagon")
+jonas.photo.attach(io: file, filename: 'jonas.jpg', content_type: 'image/jpg')
 jonas.save!
 puts "#{jonas.first_name} was created. What a great user!"
 
+file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1617604976/nuur2wmzwub7k9xcgd5f.jpg')
 caterina = User.new(email: "caterina@caterina.com", password: "123456", first_name: "Caterina", last_name: "Wagon")
+caterina.photo.attach(io: file, filename: 'caterina.jpg', content_type: 'image/jpg')
 caterina.save!
 puts "#{caterina.first_name} was created. What a great user!"
 
+file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1617972092/txqoasjgslma5y22gfdu.jpg')
 silke = User.new(email: "silke@silke.com", password: "123456", first_name: "Silke", last_name: "Wagon")
+silke.photo.attach(io: file, filename: 'silke.jpg', content_type: 'image/jpg')
 silke.save!
 puts "#{silke.first_name} was created. What a great user!"
 
+file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1617954179/ojiticlbou6iocwbqeje.jpg')
 seb = User.new(email: "seb@seb.com", password: "123456", first_name: "Sebastian", last_name: "Wagon")
+seb.photo.attach(io: file, filename: 'seb.jpg', content_type: 'image/jpg')
 seb.save!
 puts "#{seb.first_name} was created. What a great user!"
 
+file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1596118942/yvkorthmlicxnuag0szm.jpg')
 max = User.new(email: "max@max.com", password: "123456", first_name: "Max", last_name: "Wagon")
+max.photo.attach(io: file, filename: 'max.jpg', content_type: 'image/jpg')
 max.save!
 puts "#{max.first_name} was created. What a great user!"
 
+file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1601461074/xrbi2mzjyawsdisknhdd.jpg')
 santi = User.new(email: "santi@santi.com", password: "123456", first_name: "Santi", last_name: "Wagon")
+santi.photo.attach(io: file, filename: 'santi.jpg', content_type: 'image/jpg')
 santi.save!
 puts "#{santi.first_name} was created. What a great user!"
 
+file = URI.open('https://avatars.githubusercontent.com/u/37805251?v=4')
 val = User.new(email: "val@val.com", password: "123456", first_name: "Valerie", last_name: "Wagon")
+val.photo.attach(io: file, filename: 'val.jpg', content_type: 'image/jpg')
 val.save!
 puts "#{val.first_name} was created. What a great user!"
 

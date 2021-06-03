@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if params[:query].present?
       @users = User.where("first_name ILIKE ?", "%#{params[:query]}%")
     else
-      @users = []
+      @users = User.all
     end
   end
 
