@@ -60,7 +60,9 @@ val.photo.attach(io: file, filename: 'val.jpg', content_type: 'image/jpg')
 val.save!
 puts "#{val.first_name} was created. What a great user!"
 
+file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1617958938/yniyzgmayab38bubnpjb.jpg')
 dave = User.new(email: "david@david.com", password: "123456", first_name: "David", last_name: "Wagon")
+dave.photo.attach(io: file, filename: 'dave.jpg', content_type: 'image/jpg')
 dave.save!
 puts "#{dave.first_name} was created. What a great user!"
 
