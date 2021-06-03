@@ -1,20 +1,32 @@
-<% @challenge_users.each do |challenge_user| %>
-<%= challenge_user.user.full_name %>
-<% end %>
-
-
-
-<div class="add-friend-form">
+<div class="container">
     <h1>Add your Friend</h1>
-    <div class ="form-box">
+    <div class ="form-control">
       <%= simple_form_for [@challenge, @challenge_user] do |f| %>
 
         <div class ="user">
           <%= f.association :user, label_method: :full_name %>
         </div>
 
-          <%= f.button :submit, "Add", class: "my-button" %>
+          <%= f.button :submit, "Add", class: "btn btn-warning" %>
 
       <% end %>
     </div>
   </div>
+
+<div class="container">
+  <div class="goals-list">
+    <% @challenge_users.each do |challenge_user| %>
+    <div class ="btn btn-primary">
+      <%= challenge_user.user.full_name %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="button-list">
+    <%= link_to "Challenge", new_challenge_path, class: "btn btn-warning" %>
+    <%= link_to "Goals", new_challenge_goal_path, class: "btn btn-warning" %>
+  </div>
+</div>
