@@ -1,35 +1,33 @@
 <br><br>
 
-<div class="container">
-  <div>
-    <%= form_tag users_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a motivation buddy"
-      %>
-      <div class="text-center">
-        <%= submit_tag "Search", class:"btn btn-warning"%>
-      </div>
-      
-    <% end %>
-  </div>
-
-
-  <br><br>
-
-  <ul>
-    <% @users.each do |user| %>
-      <div class="card-product">
-        <%= cl_image_tag user.photo.key %> 
-        <div class="card-product-infos">
-          <h2><%= user.first_name %></h2>
-          <p><%= user.last_name %></p>
-        </div>
-        <%= link_to "+", "#", class: "btn btn-ghost" %>
-      </div>
-    <% end %>
-  </ul>
-
+<div>
+  <%= form_tag users_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a motivation buddy"
+    %>
+    <div class="text-center">
+      <%= submit_tag "Search", class:"btn btn-warning"%>
+    </div>
+    
+  <% end %>
 </div>
+
+
+<br><br>
+
+<ul>
+  <% @users.each do |user| %>
+    <div class="card-product">
+      <%= cl_image_tag user.photo.key %> 
+      <div class="card-product-infos">
+        <h2><%= user.first_name %></h2>
+        <p><%= user.last_name %></p>
+      </div>
+      <%= button_to "+", user_friendships_create_path(user), class: "btn btn-ghost", method: :post %>
+    </div>
+  <% end %>
+</ul>
+
 

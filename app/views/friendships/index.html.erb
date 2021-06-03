@@ -1,0 +1,35 @@
+<br>
+<br>
+<h2><%= @user_id %></h2>
+
+<br>
+<br>
+
+<ul>
+  <% @friends.each do |friend| %>
+    <div class="card-product">
+      <%= cl_image_tag friend.photo.key %> 
+      <div class="card-product-infos">
+        <h2><%= friend.first_name %></h2>
+        <p><%= friend.last_name %></p>
+      </div>
+      <%= button_to "-", friendships_destroy_path(friend), class: "btn btn-ghost", method: :delete %>
+    </div>
+  <% end %>
+</ul>
+
+<br>
+<br>
+
+<ul>
+  <% @friends_pending.each do |friend| %>
+    <div class="card-product">
+      <%= cl_image_tag friend.photo.key %> 
+      <div class="card-product-infos">
+        <h2><%= friend.first_name %></h2>
+        <p><%= friend.last_name %></p>
+      </div>
+      <%= button_to "accept", friendship_path(friend), class: "btn btn-ghost", method: :patch %>
+    </div>
+  <% end %>
+</ul>
