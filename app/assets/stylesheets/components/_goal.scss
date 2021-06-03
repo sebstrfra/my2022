@@ -1,0 +1,31 @@
+.goal-container {
+  border-style: solid;
+  min-width: 300px;
+  max-width: 300px;
+
+}
+
+.goal-top-row {
+  // border-style: solid;
+  display: flex;
+
+}
+
+.goal-table-header {
+  font-size: 9px;
+}
+
+.goal-table-user-name {
+  font-size: 12px;
+}
+
+.goal-table-user-current-value {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.goal-table-user-delta-value {
+  font-size: 14px;
+}
+
+
