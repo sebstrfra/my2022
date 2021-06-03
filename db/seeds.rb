@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'date'
 
 UserGoal.destroy_all
 Goal.destroy_all
@@ -59,6 +60,10 @@ val.photo.attach(io: file, filename: 'val.jpg', content_type: 'image/jpg')
 val.save!
 puts "#{val.first_name} was created. What a great user!"
 
+dave = User.new(email: "david@david.com", password: "123456", first_name: "David", last_name: "Wagon")
+dave.save!
+puts "#{dave.first_name} was created. What a great user!"
+
 puts "** #{User.count} beautiful users created! They will love the app! **"
 
 puts ""
@@ -109,13 +114,18 @@ puts ""
 
 puts "*** Now let's see, how everyone is performing... ***"
 
+challenge1.users.each do |user|
+  challenge1.goals.each do |goal|
+    amount = rand(0...goal.target_amount)
+    UserGoal.create(user: user, goal: goal, current_amount: amount)
+  end
+end
+
 puts "/// USER PROGRESS TO BE ADDED ///"
 
-puts "Let's build a second Challenge"
+puts "** Now let's build a 2nd challenge **"
 
-puts "** Now let's build a challenge **"
-
-challenge2 = Challenge.new(name: "Summer Sports", description: "Let's get rid of our lockdown fat and in Shape for our September Holidays", start_date: "01.05.2021", end_date: "01.09.2021", user: User.all.sample)
+challenge2 = Challenge.create(name: "Summer Sports", description: "Let's get rid of our lockdown fat and in Shape for our September Holidays", start_date: "01.05.2021", end_date: "01.09.2021", user: User.all.sample)
 challenge2.save!
 puts "The challenge with the fancy name << #{challenge2.name} >> was created by #{challenge2.user.first_name}. It starts at #{challenge2.start_date} and ends at #{challenge2.end_date}."
 
@@ -146,11 +156,18 @@ goal22 = Goal.new(challenge: challenge2, name: "Running", target_amount: rand(50
 goal22.save!
 puts "The goal << #{goal22.name} (#{goal22.goal_type} #{goal22.target_amount} #{goal22.unit}) >> was added to the challenge."
 
-goal23 = Goal.new(challenge: challenge1, name: "Fasting (No food!)", target_amount: rand(30), unit: "days", goal_type: :min_amount)
+goal23 = Goal.new(challenge: challenge2, name: "Fasting (No food!)", target_amount: rand(30), unit: "days", goal_type: :min_amount)
 goal23.save!
 puts "The goal << #{goal23.name} (#{goal23.goal_type} #{goal23.target_amount} #{goal23.unit}) >> was added to the challenge."
 
 puts ""
+
+challenge2.users.each do |user|
+  challenge2.goals.each do |goal|
+    amount = rand(0...goal.target_amount)
+    UserGoal.create(user: user, goal: goal, current_amount: amount)
+  end
+end
 
 # date = challenge1.start_date
 # current_date = Date.Now

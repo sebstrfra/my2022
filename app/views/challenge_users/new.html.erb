@@ -1,0 +1,20 @@
+<% @challenge_users.each do |challenge_user| %>
+<%= challenge_user.user.full_name %>
+<% end %>
+
+
+
+<div class="add-friend-form">
+    <h1>Add your Friend</h1>
+    <div class ="form-box">
+      <%= simple_form_for [@challenge, @challenge_user] do |f| %>
+
+        <div class ="user">
+          <%= f.association :user, label_method: :full_name %>
+        </div>
+
+          <%= f.button :submit, "Add", class: "my-button" %>
+
+      <% end %>
+    </div>
+  </div>
