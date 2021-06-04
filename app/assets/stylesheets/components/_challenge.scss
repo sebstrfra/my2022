@@ -11,8 +11,8 @@
 
   img {
     margin-left: 10px;
-    height: 35px;
-    width: 35px;
+    height: 40px;
+    width: 40px;
     object-fit: cover;
     border-radius: 50%;
   }
@@ -41,5 +41,25 @@
   font-weight: 600;
   font-size: 18px;
   color: #235173;
-  margin-top: 5%;
 }
+
+.challenge-h1 {
+  font-weight: 600;
+  font-size: 24px;
+  color: #235173;
+}
+
+.all-centered {
+  justify-content: center;
+}
+
+.goal-titel {
+  font-weight: 600;
+  font-size: 18px;
+  color: white;
+  background-color: #235173;
+  border-radius: 3px;
+}
+
+
+
