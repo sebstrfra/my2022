@@ -1,35 +1,35 @@
-<br>
-<br>
-<h2><%= @user_id %></h2>
+<div class="container">
+  <h1>Friends</h1>
 
-<br>
-<br>
 
-<ul>
-  <% @friends.each do |friend| %>
-    <div class="card-product">
-      <%= cl_image_tag friend.photo.key %> 
-      <div class="card-product-infos">
-        <h2><%= friend.first_name %></h2>
-        <p><%= friend.last_name %></p>
+  <div class="card-box">
+    <% @friends.each do |friend| %>
+      <div class="card-product">
+        <%= cl_image_tag friend.photo.key %> 
+        <div class="card-product-infos">
+          <p><%= friend.first_name %></p>
+          <p><%= friend.last_name %></p>
+        </div>
+        <div class="ghost">
+          <%= button_to "-", friendships_destroy_path(friend), class: "btn btn-ghost", method: :delete %>
+        </div>
       </div>
-      <%= button_to "-", friendships_destroy_path(friend), class: "btn btn-ghost", method: :delete %>
-    </div>
-  <% end %>
-</ul>
+    <% end %>
+  </div>
 
-<br>
-<br>
+  <h1>Waiting for confirmation</h1>
 
-<ul>
-  <% @friends_pending.each do |friend| %>
-    <div class="card-product">
-      <%= cl_image_tag friend.photo.key %> 
-      <div class="card-product-infos">
-        <h2><%= friend.first_name %></h2>
-        <p><%= friend.last_name %></p>
+  <div class="card-box">
+    
+    <% @friends_pending.each do |friend| %>
+      <div class="card-product">
+        <%= cl_image_tag friend.photo.key %> 
+        <div class="card-product-infos">
+          <p><%= friend.first_name %></p>
+          <p><%= friend.last_name %></p>
+        </div>
+
       </div>
-      <%= button_to "accept", friendship_path(friend), class: "btn btn-ghost", method: :patch %>
-    </div>
-  <% end %>
-</ul>
+    <% end %>
+  </div>
+</div>

@@ -11,6 +11,9 @@ class ChallengeUsersController < ApplicationController
     @challenge_user = ChallengeUser.new(challenge_user_params)
     @challenge_user.challenge = @challenge
     if @challenge_user.save
+      @challenge.goals.each do |goal|
+        UserGoal.create(user_id: @challenge_user.user_id, goal_id: goal.id, current_amount: 0)
+      end
       redirect_to new_challenge_challenge_user_path(@challenge)
     else
       render :new

@@ -1,11 +1,38 @@
-.form-control {
-  flex: 50%;
-  background-color: white;
-  border-radius: 8px;
-  text-align: center;
-  margin: 8px;
-  height: 50px;
-  padding: 16px;
-  font-size: clamp(12px, 1.25vw, 16px);
-  border-color: #17496F;
+.btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.new_challenge {
+
+  input {
+    border-radius: 6px;
+  }
+
+  select {
+    border-radius: 6px;
+  }
+}
+
+.simple_form {
+
+  input {
+    border-radius: 6px;
+  }
+
+  select {
+    border-radius: 6px;
+  }
+}
+
+.simple_form {
+
+  input {
+    border-radius: 6px;
+  }
+
+  select {
+    border-radius: 6px;
+  }
 }

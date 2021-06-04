@@ -1,33 +1,34 @@
-<br><br>
+<h1>Add your friends</h1>
 
-
-<div>
-  <%= form_tag users_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a motivation buddy"
-    %>
-    <div class="text-center">
-      <%= submit_tag "Search", class:"btn btn-warning"%>
-    </div>
-    
-  <% end %>
-</div>
-
-<br><br>
-
-<ul>
-  <% @users.each do |user| %>
-    <div class="card-product">
-      <%= cl_image_tag user.photo.key %> 
-      <div class="card-product-infos">
-        <h2><%= user.first_name %></h2>
-        <p><%= user.last_name %></p>
+<div class="container">
+  <div class="simple_form">
+    <%= form_tag users_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a motivation buddy"
+      %>
+      <div class="text-center">
+        <%= submit_tag "Search", class:"btn btn-warning"%>
       </div>
-      <%= button_to "+", user_friendships_create_path(user), class: "btn btn-ghost", method: :post %>
-    </div>
-  <% end %>
-</ul>
+      
+    <% end %>
+  </div>
+
+  <div class="card-box">
+      <% @users.each do |user| %>
+        <div class="card-product">
+          <%= cl_image_tag user.photo.key %> 
+          <div class="card-product-infos">
+            <p><%= user.first_name %></p>
+            <p><%= user.last_name %></p>
+          </div>
+          <div class="ghost">
+            <%= button_to "+", user_friendships_create_path(user), class: "btn btn-ghost", method: :post %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
 
 
