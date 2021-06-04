@@ -1,1 +1,51 @@
+.landing-page-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -100px;
+  margin-bottom: 30px;
+  text-align: center;
+
+}
+
+
+.landing-page-image {
+
+    background-size: cover;
+    background-position: center;
+    padding: 150px 50px;
+    height: 500px;
+    object-fit: cover;
+    background-image: asset-url("landing_page.png");
+
+}
+
+.landing-page-testimonials {
+  margin-top: 195px;
+  text-align: center;
+}
+
+.landing-page-quote {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.join-button {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+h3 {
+  font-size: 13px;
+  color: #235173;
+}
+
+h4 {
+  font-size: 18px;
+  font-style: italic;
+}
+
 // Specific CSS for your home-page
