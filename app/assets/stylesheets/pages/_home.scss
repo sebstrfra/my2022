@@ -21,7 +21,7 @@
 }
 
 .landing-page-testimonials {
-  margin-top: 250px;
+  margin-top: 195px;
   text-align: center;
 }
 
@@ -31,10 +31,21 @@
 }
 
 .join-button {
-  margin-top: 150px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
 }
+
+h3 {
+  font-size: 13px;
+  color: #235173;
+}
+
+h4 {
+  font-size: 18px;
+  font-style: italic;
+}
+
 // Specific CSS for your home-page
