@@ -4,25 +4,27 @@
  <div class="container">
     <h1>Create your Challenge</h1>
 
-    <div class ="form-control">
-      <%= simple_form_for @challenge do |f| %>
 
-        <div class ="form-box">
-          <%= f.input :name %>
-        </div>
+    <%= simple_form_for @challenge do |f| %>
 
-        <div class ="date">
-          <%= f.input :start_date %>
-        </div>
+      <div class="form-box">
+        <%= f.input :name, label: false, placeholder: "Name" %>
+      </div>
 
-        <div class ="date">
-          <%= f.input :end_date %>
-        </div>
+      <div class="date">
+        <%= f.input :start_date %>
+      </div>
 
+      <div class="date">
+        <%= f.input :end_date %>
+      </div>
+
+      <div class="btn-container">
         <%= f.button :submit, "Create", class: "btn btn-warning" %>
-        <% end %>
+      </div>
+      <% end %>
 
-    </div>
+
   </div>
 
 
