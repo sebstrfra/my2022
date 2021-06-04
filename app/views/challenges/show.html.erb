@@ -1,6 +1,6 @@
 
 
-<div class="container">
+<div class="container all-centered">
 
   <div class="challenge-header">
 
@@ -11,6 +11,8 @@
     <div class="challenge-user-row">
       <% @users.each do |user| %>
       <%= cl_image_tag user.photo.key %>
+
+
       <% end %>
       <br><br>
     </div>
@@ -32,21 +34,32 @@
   <br>
   <br>
 
+  <% index = 1  %>
+
   <% @goals.each do |goal| %>
+
+  <% goal_for_the_day = ((goal.target_amount.to_f / @challenge_duration.to_f) * @challenge_day)%>
+
+  <% goal_type_nice = "min" if goal.goal_type == "min_amount" %>
+  <% goal_type_nice = "max" if goal.goal_type == "max_amount" %>
 
   <div class="goal-container">
 
     <div class="goal-top-row">
       <table style="width:100%">
         <tr>
-          <td rowspan="2" class="challenge-h2" width="50%"><%= goal.name %></td>
-          <td><%= goal.target_amount %></td>
-          <td class="goal-table-header"><%= goal.unit %> <%= goal.goal_type %> until end of challenge</td>
+          <td colspan="6" class="goal-titel"> #<%= index %>: <%= goal.name %></td>
+        </tr>
+        <tr height=10px>
+          <td></td>
         </tr>
         <tr>
-          <% goal_for_the_day = ((goal.target_amount.to_f / @challenge_duration.to_f) * @challenge_day)%>
-          <td><%= goal_for_the_day.round(0) %></td>
-          <td class="goal-table-header"><%= goal.unit %> <%= goal.goal_type %> by today</td>
+          <td class="number-with-orange-background"><%= goal.target_amount %></td>
+          <td class="goal-table-header"><%= goal.unit %> <%= goal_type_nice %> until end of challenge</td>
+          <td class="number-with-orange-background"><%= goal_for_the_day.round(0) %></td>
+          <td class="goal-table-header"><%= goal.unit %> <%= goal_type_nice %> by today</td>
+          <td class="number-with-orange-background">XXX</td>
+          <td class="goal-table-header">team average today</td>
         </tr>
       </table>
     </div>
@@ -80,11 +93,14 @@
           </tr>
         <% end %>
       </table>
+    </div class>
+    <br>
+    <div style="text-align: center">
+      <%= link_to "+ 1 #{goal.unit.singularize}", "#", class: "btn btn-challenge" %>
+    </div>
     </div>
     <br>
-    <%= link_to "+ 1 #{goal.unit}", "#", class: "btn btn-warning" %>
-    </div>
     <br>
-    <br>
+  <% index = index + 1  %>
   <% end %>
 </div>

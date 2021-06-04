@@ -1,8 +1,9 @@
 .goal-container {
-  border-style: solid;
-  min-width: 300px;
-  max-width: 300px;
-
+  min-width: 340px;
+  max-width: 340px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 5px;
+  align-items: center;
 }
 
 .goal-top-row {
@@ -16,16 +17,16 @@
 }
 
 .goal-table-user-name {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .goal-table-user-current-value {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
 }
 
 .goal-table-user-delta-value {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 
