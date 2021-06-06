@@ -20,13 +20,28 @@
   <h1>Waiting for confirmation</h1>
 
   <div class="card-box">
-    
+    <% @friends_accepting.each do |friend| %>
+      <div class="card-product">
+        <%= cl_image_tag friend.photo.key %> 
+        <div class="card-product-infos">
+          <p><%= friend.first_name %></p>
+          <p><%= friend.last_name %></p>
+        </div>
+        <div class="ghost">
+          <%= button_to "+", friendships_update_path(friend), class: "btn btn-ghost", method: :patch %>
+        </div>
+
+      </div>
+    <% end %>
     <% @friends_pending.each do |friend| %>
       <div class="card-product">
         <%= cl_image_tag friend.photo.key %> 
         <div class="card-product-infos">
           <p><%= friend.first_name %></p>
           <p><%= friend.last_name %></p>
+        </div>
+        <div class="ghost">
+          <%= button_to "-", friendships_destroy_path(friend), class: "btn btn-ghost", method: :delete %>
         </div>
 
       </div>

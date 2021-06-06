@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     resources :goals, only: [ :new, :create ]
   end
   delete 'friendships/:id', to: 'friendships#destroy', as: :friendships_destroy
-  resources :friendships, only: [ :index, :update ]
+  patch 'friendships/:id', to: 'friendships#update', as: :friendships_update
+  resources :friendships, only: [ :index ]
   patch 'challenge_users/:id', to: 'challenge_users#update'
   post 'goals/:id/progress_entries', to: 'progress_entries#create'
 end
