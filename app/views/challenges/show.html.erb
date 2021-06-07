@@ -34,31 +34,28 @@
   <br>
   <br>
 
-  <% index = 1  %>
 
-  <% @goals.each do |goal| %>
+  <% @goals.each.with_index(1) do |goal, ind| %>
 
-  <% goal_for_the_day = ((goal.target_amount.to_f / @challenge_duration.to_f) * @challenge_day)%>
+  <%# goal_for_the_day = goal.amount_per_day * goal.challenge.day_of_challenge%>
 
-  <% goal_type_nice = "min" if goal.goal_type == "min_amount" %>
-  <% goal_type_nice = "max" if goal.goal_type == "max_amount" %>
 
   <div class="goal-container">
 
     <div class="goal-top-row">
       <table style="width:100%">
         <tr>
-          <td colspan="6" class="goal-titel"> #<%= index %>: <%= goal.name %></td>
+          <td colspan="6" class="goal-titel"> #<%= ind %>: <%= goal.name %></td>
         </tr>
         <tr height=10px>
           <td></td>
         </tr>
         <tr>
           <td class="number-with-orange-background"><%= goal.target_amount %></td>
-          <td class="goal-table-header"><%= goal.unit %> <%= goal_type_nice %> until end of challenge</td>
-          <td class="number-with-orange-background"><%= goal_for_the_day.round(0) %></td>
-          <td class="goal-table-header"><%= goal.unit %> <%= goal_type_nice %> by today</td>
-          <td class="number-with-orange-background">XXX</td>
+          <td class="goal-table-header"><%= goal.unit %> <%= goal.min_max_nice %> until end of challenge</td>
+          <td class="number-with-orange-background"><%= goal.goal_for_the_day.round(0) %></td>
+          <td class="goal-table-header"><%= goal.unit %> <%= goal.min_max_nice %> by today</td>
+          <td class="number-with-orange-background"> <%= goal.team_average.round(0)  %> </td>
           <td class="goal-table-header">team average today</td>
         </tr>
       </table>
@@ -75,8 +72,10 @@
         </tr>
 
         <% @users.each do |user| %>
-        <% user_amount_of_day = UserGoal.where(user: user, goal: goal)[0].current_amount %>
-        <% user_delta = user_amount_of_day - goal_for_the_day %>
+        <% user_amount_of_day = UserGoal.user_amount_of_day(goal, user) %>
+        <% user_delta_day_target = user_amount_of_day - goal.goal_for_the_day %>
+        <% user_delta_team_average = user_amount_of_day - goal.team_average %>
+        <%= raise %>
           <tr>
             <td class="goal-table-user-name">
               <%= user.first_name %>
@@ -85,10 +84,10 @@
               <%= user_amount_of_day%>
             </td>
             <td class="goal-table-user-delta-value">
-              <%= user_delta.round(0) %>
+              <%= user_delta_day_target.round(0) %>
             </td>
             <td class="goal-table-user-delta-value">
-              XXX
+              <%= user_delta_team_average.round(0) %>
             </td>
           </tr>
         <% end %>
@@ -101,6 +100,5 @@
     </div>
     <br>
     <br>
-  <% index = index + 1  %>
   <% end %>
 </div>

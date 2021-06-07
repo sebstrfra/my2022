@@ -23,12 +23,12 @@ class ChallengesController < ApplicationController
     @users = @challenge.users
     @goals = @challenge.goals
 
-    @challenge_duration = (@challenge.end_date - @challenge.start_date).to_i
-    @challenge_day = (Date.today - @challenge.start_date).to_i
+    # @challenge_duration = (@challenge.end_date - @challenge.start_date).to_i
+    # @challenge_day = (Date.today - @challenge.start_date).to_i
     @days_left = (@challenge.end_date - Date.today).to_i
+
   end
 
- 
   private
   def challenge_params
     params.require(:challenge). permit(:name, :start_date, :end_date)
