@@ -94,7 +94,7 @@
     </div class>
     <br>
     <div style="text-align: center">
-      <%= link_to "+ 1 #{goal.unit.singularize}", "#", class: "btn btn-challenge" %>
+      <%= link_to "+ 1 #{goal.unit.singularize}", user_goal_plus_one_path(UserGoal.where(user: current_user, goal: goal).first), class: "btn btn-challenge" %>
     </div>
     </div>
     <br>
