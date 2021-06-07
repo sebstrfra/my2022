@@ -1,10 +1,29 @@
 .navbar-lewagon {
+  display:flex;
   justify-content: space-between;
   background: #F3B64B;
+  width: 100%;
+}
+
+.navbar-nav {
+  display:flex;
+  justify-content: space-between;
+  align-item: center;
+}
+
+.dropdown-menu {
+  border-radius: 6px;
+  text-align: center;
+  border: none;
+  padding: 0;
+}
+
+.dropdown-item {
+  color: #17496F;
 }
 
 .img-logo {
-  margin-left: 20px;
+  margin-left: 10px;
   width: 100px;
 }
 
@@ -14,7 +33,7 @@
 
 .navbar-light .navbar-nav .nav-link  {
   color: white;
-  margin-left: 20px;
+  margin-left: 15px;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
@@ -25,13 +44,14 @@
   color: white;
   display: flex;
   justify-content: space-between;
+  margin-top: 7px;
 }
 
-.navbar-text {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 20px;
-}
+// .navbar-text {
+//   display: flex;
+//   justify-content: space-between;
+//   margin-right: 20px;
+// }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
