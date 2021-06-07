@@ -17,4 +17,8 @@ class Challenge < ApplicationRecord
     (self.end_date - self.start_date).to_i
   end
 
+  def days_left
+    (self.end_date - Date.today).to_i
+  end
+
 end

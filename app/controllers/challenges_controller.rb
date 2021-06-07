@@ -25,7 +25,7 @@ class ChallengesController < ApplicationController
 
     # @challenge_duration = (@challenge.end_date - @challenge.start_date).to_i
     # @challenge_day = (Date.today - @challenge.start_date).to_i
-    @days_left = (@challenge.end_date - Date.today).to_i
+    # @days_left = (@challenge.end_date - Date.today).to_i
 
   end
 
