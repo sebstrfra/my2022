@@ -1,7 +1,11 @@
 .goals-list {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  color: #17496F;
+}
+
+.goal-text {
+  margin-left: 5px;
 }
 
 .button-list {
