@@ -11,16 +11,15 @@
     <div class="challenge-user-row">
       <% @users.each do |user| %>
       <%= cl_image_tag user.photo.key %>
-
-
       <% end %>
+      <div><i class="fas fa-user-plus"></i></div>
       <br><br>
     </div>
 
     <div class="challenge-flexbox-center">
 
       <div class="challenge-days-left">
-        <h1 class="number-with-orange-background"><%= @days_left %></h1>
+        <h1 class="number-with-orange-background"><%= @challenge.days_left %></h1>
       </div>
 
       <div class="challenge-days-left-details challenge-small-text">
@@ -34,31 +33,25 @@
   <br>
   <br>
 
-  <% index = 1  %>
 
-  <% @goals.each do |goal| %>
-
-  <% goal_for_the_day = ((goal.target_amount.to_f / @challenge_duration.to_f) * @challenge_day)%>
-
-  <% goal_type_nice = "min" if goal.goal_type == "min_amount" %>
-  <% goal_type_nice = "max" if goal.goal_type == "max_amount" %>
+  <% @goals.each.with_index(1) do |goal, ind| %>
 
   <div class="goal-container">
 
     <div class="goal-top-row">
       <table style="width:100%">
         <tr>
-          <td colspan="6" class="goal-titel"> #<%= index %>: <%= goal.name %></td>
+          <td colspan="6" class="goal-titel"> #<%= ind %>: <%= goal.name %></td>
         </tr>
         <tr height=10px>
           <td></td>
         </tr>
         <tr>
           <td class="number-with-orange-background"><%= goal.target_amount %></td>
-          <td class="goal-table-header"><%= goal.unit %> <%= goal_type_nice %> until end of challenge</td>
-          <td class="number-with-orange-background"><%= goal_for_the_day.round(0) %></td>
-          <td class="goal-table-header"><%= goal.unit %> <%= goal_type_nice %> by today</td>
-          <td class="number-with-orange-background">XXX</td>
+          <td class="goal-table-header"><%= goal.unit %> <%= goal.min_max_nice %> until end of challenge</td>
+          <td class="number-with-orange-background"><%= goal.goal_for_the_day.round(0) %></td>
+          <td class="goal-table-header"><%= goal.unit %> <%= goal.min_max_nice %> by today</td>
+          <td class="number-with-orange-background"> <%= goal.team_average.round(0)  %> </td>
           <td class="goal-table-header">team average today</td>
         </tr>
       </table>
@@ -74,21 +67,19 @@
           <td>Δ team average</td>
         </tr>
 
-        <% @users.each do |user| %>
-        <% user_amount_of_day = UserGoal.where(user: user, goal: goal)[0].current_amount %>
-        <% user_delta = user_amount_of_day - goal_for_the_day %>
+        <% goal.user_goals.sort_by(&:current_amount).reverse.each do |user_goal| %>
           <tr>
             <td class="goal-table-user-name">
-              <%= user.first_name %>
+              <%= user_goal.user.first_name %>
             </td>
             <td class="goal-table-user-current-value">
-              <%= user_amount_of_day%>
+              <%= user_goal.current_amount%>
             </td>
             <td class="goal-table-user-delta-value">
-              <%= user_delta.round(0) %>
+                <div class="<%= user_goal.delta_to_target < 0 ? "text-danger" : "text-success"%>"><%= user_goal.delta_to_target.round(0) %></div>
             </td>
             <td class="goal-table-user-delta-value">
-              XXX
+              <div class="<%= user_goal.delta_to_team_average < 0 ? "text-danger" : "text-success"%>"><%= user_goal.delta_to_team_average.round(0) %></div>
             </td>
           </tr>
         <% end %>
@@ -96,11 +87,10 @@
     </div class>
     <br>
     <div style="text-align: center">
-      <%= link_to "+ 1 #{goal.unit.singularize}", "#", class: "btn btn-challenge" %>
+      <%= link_to "+ 1 #{goal.unit.singularize}", user_goal_plus_one_path(UserGoal.where(user: current_user, goal: goal).first), class: "btn btn-challenge" %>
     </div>
     </div>
     <br>
     <br>
-  <% index = index + 1  %>
   <% end %>
 </div>

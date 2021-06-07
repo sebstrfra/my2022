@@ -12,4 +12,10 @@ Rails.application.routes.draw do
   resources :friendships, only: [ :index ]
   patch 'challenge_users/:id', to: 'challenge_users#update'
   post 'goals/:id/progress_entries', to: 'progress_entries#create'
+
+  resources :user_goals do
+    get :plus_one
+  end
+
+
 end

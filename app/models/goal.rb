@@ -10,4 +10,30 @@ class Goal < ApplicationRecord
   # validates :goal_type, presence: true
 
   enum goal_type: [:min_amount, :max_amount]
+
+  def team_average
+    all_amounts = self.user_goals.map{|x| x[:current_amount]}
+    team_average = all_amounts.inject(&:+).to_f / all_amounts.size
+    return team_average
+  end
+
+  def min_max_nice
+    self.goal_type == "min_amount" ? "min" : "max"
+  end
+
+  def amount_per_day
+    (self.target_amount.to_f / self.challenge.challenge_duration.to_f)
+  end
+
+  def goal_for_the_day
+    self.amount_per_day * self.challenge.day_of_challenge
+  end
+
+
+
+
+
+
+
+
 end
