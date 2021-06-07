@@ -36,8 +36,6 @@
 
   <% @goals.each.with_index(1) do |goal, ind| %>
 
-  <%# goal_for_the_day = goal.amount_per_day * goal.challenge.day_of_challenge%>
-
   <div class="goal-container">
 
     <div class="goal-top-row">
@@ -70,11 +68,6 @@
         </tr>
 
         <% goal.user_goals.sort_by(&:current_amount).reverse.each do |user_goal| %>
-        <%# user_amount_of_day = UserGoal.user_amount_of_day(goal, user) %>
-        <%# user_goal = UserGoal.where(user: user, goal: goal)[0] %>
-        <%# user_delta_day_target = user_amount_of_day - goal.goal_for_the_day %>
-        <%# user_delta_team_average = user_amount_of_day - goal.team_average %>
-        <%# raise %>
           <tr>
             <td class="goal-table-user-name">
               <%= user_goal.user.first_name %>
@@ -83,10 +76,10 @@
               <%= user_goal.current_amount%>
             </td>
             <td class="goal-table-user-delta-value">
-              <%= user_goal.delta_to_target.round(0) %>
+                <div class="<%= user_goal.delta_to_target < 0 ? "text-danger" : "text-success"%>"><%= user_goal.delta_to_target.round(0) %></div>
             </td>
             <td class="goal-table-user-delta-value">
-              <%= user_goal.delta_to_team_average.round(0) %>
+              <div class="<%= user_goal.delta_to_team_average < 0 ? "text-danger" : "text-success"%>"><%= user_goal.delta_to_team_average.round(0) %></div>
             </td>
           </tr>
         <% end %>
