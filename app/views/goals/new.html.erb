@@ -22,11 +22,7 @@
 
 <div class="container">
   <div class="goals-list">
-    <% @goals.each do |goal| %>
-    <div class ="btn btn-primary">
-      <%= goal.name %>
-    </div>
-    <% end %>
+    <p class="goal-text"><%= @goals.map { |goal| goal.name }.join(" | ") %></p>
   </div>
 </div>
 

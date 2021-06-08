@@ -40,3 +40,10 @@ Style/EmptyMethod:
   Enabled: false
 Bundler/OrderedGems:
   Enabled: false
+Style/RedundantSelf:
+  Enabled: false
+
+
+
+
+
