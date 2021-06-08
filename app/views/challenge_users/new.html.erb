@@ -1,5 +1,6 @@
 <div class="container">
     <h1>Add your Friend</h1>
+<% if @friendships.present? %>
     <%= simple_form_for [@challenge, @challenge_user] do |f| %>
       <div class="user">
         <%= f.association :user, collection: @friends, label_method: :full_name %>
@@ -7,6 +8,9 @@
       <div class="btn-container">
         <%= f.button :submit, "Add", class: "btn btn-warning" %>
       </div>
+    <% end %>
+    <% else %>
+      <p>You haven't added any friends to your account yet 😳!</p>
     <% end %>
   </div>
 
@@ -22,14 +26,3 @@
     <% end %>
   </div>
 </div>
-
-<div class="container">
-
-  <div class="button-list">
-    <%= link_to "Challenge", challenge_path(@challenge), class: "btn btn-warning" %>
-    <%= link_to "Goals", new_challenge_goal_path, class: "btn btn-warning" %>
-  </div>
-</div>
-
-
-

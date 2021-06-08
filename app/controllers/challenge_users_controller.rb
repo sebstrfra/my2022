@@ -24,7 +24,7 @@ class ChallengeUsersController < ApplicationController
       @challenge.goals.each do |goal|
         UserGoal.create(user_id: @challenge_user.user_id, goal_id: goal.id, current_amount: 0)
       end
-      redirect_to new_challenge_challenge_user_path(@challenge)
+      redirect_to challenge_path(@challenge)
     end
   end
 

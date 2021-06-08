@@ -19,17 +19,3 @@
 
       <% end %>
 </div>
-
-<div class="container">
-  <div class="goals-list">
-    <p class="goal-text"><%= @goals.map { |goal| goal.name }.join(" | ") %></p>
-  </div>
-</div>
-
-<div class="container">
-
-  <div class="button-list">
-    <%= link_to "Challenge", challenge_path(@challenge), class: "btn btn-warning" %>
-    <%= link_to "Friends", new_challenge_challenge_user_path, class: "btn btn-warning" %>
-  </div>
-</div>

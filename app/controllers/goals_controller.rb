@@ -12,7 +12,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @goal.challenge = @challenge
     if @goal.save
-      redirect_to new_challenge_goal_path(@challenge)
+      redirect_to challenge_path(@challenge)
     else
       render :new
     end
