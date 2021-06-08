@@ -11,7 +11,7 @@
           <p><%= friend.last_name %></p>
         </div>
         <div class="ghost">
-          <%= button_to "-", friendships_destroy_path(friend), class: "btn btn-ghost", method: :delete %>
+          <%= button_to "-", friendships_destroy_path(friend), class: "btn btn-primary btn-minus", method: :delete %>
         </div>
       </div>
     <% end %>
@@ -28,7 +28,7 @@
           <p><%= friend.last_name %></p>
         </div>
         <div class="ghost">
-          <%= button_to "+", friendships_update_path(friend), class: "btn btn-ghost", method: :patch %>
+          <%= button_to "+", friendships_update_path(friend), class: "btn btn-warning btn-plus", method: :patch %>
         </div>
 
       </div>
@@ -41,7 +41,7 @@
           <p><%= friend.last_name %></p>
         </div>
         <div class="ghost">
-          <%= button_to "-", friendships_destroy_path(friend), class: "btn btn-ghost", method: :delete %>
+          <%= button_to "-", friendships_destroy_path(friend), class: "btn btn-primary btn-minus", method: :delete %>
         </div>
 
       </div>
