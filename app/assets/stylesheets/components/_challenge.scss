@@ -8,20 +8,21 @@
 .challenge-user-row {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  margin: 15px 0px;
+  gap: 10px;
 
   img {
-    margin-left: 10px;
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     object-fit: cover;
     border-radius: 50%;
   }
 
   div {
     display: flex;
-    margin-left: 10px;
-    height: 40px;
-    width: 40px;
+    min-height: 50px;
+    min-width: 50px;
     border-radius: 50%;
     border-style: solid;
     align-items: center;
@@ -55,6 +56,7 @@
   font-weight: 600;
   font-size: 18px;
   color: #235173;
+  text-align: center;
 }
 
 .challenge-h1 {
@@ -74,6 +76,28 @@
   background-color: #235173;
   border-radius: 3px;
 }
+
+.goal-tabs.nav-tabs {
+  border: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  .nav-link {
+    border: none;
+    background: lightgrey;
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    border-radius: 50%;
+    margin: 10px;
+    &.active {
+      background-color: #16496f;
+    }
+  }
+}
+
+
+
 
 
 

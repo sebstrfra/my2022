@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post 'goals/:id/progress_entries', to: 'progress_entries#create'
 
   resources :user_goals do
-    get :plus_one
+    patch :plus_one
   end
 
 
