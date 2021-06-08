@@ -12,7 +12,6 @@
       <%= cl_image_tag user.photo.key %>
       <% end %>
       <div><i class="fas fa-user-plus"></i></div>
-      <br><br>
     </div>
 
     <div class="challenge-flexbox-center">
@@ -21,43 +20,93 @@
         <h1 class="number-with-orange-background"><%= @challenge.days_left %></h1>
       </div>
 
-      <div class="challenge-days-left-details challenge-small-text">
+      <div class="challenge-days-left-details">
         days left until <br> <%= @challenge.end_date.strftime("%b %d, %Y") %>
       </div>
 
     </div>
-
   </div>
 
   <br>
   <br>
 
 
+
+  <br>
+  <br>
+
+
+
+
+
   <% @goals.each.with_index(1) do |goal, ind| %>
 
-  <div class="goal-container">
-
-    <div class="goal-top-row">
-      <table style="width:100%">
-        <tr>
-          <td colspan="6" class="goal-titel"> #<%= ind %>: <%= goal.name %></td>
-        </tr>
-        <tr height=10px>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="number-with-orange-background"><%= goal.target_amount %></td>
-          <td class="goal-table-header"><%= goal.unit %> <%= goal.min_max_nice %> until end of challenge</td>
-          <td class="number-with-orange-background"><%= goal.goal_for_the_day.round(0) %></td>
-          <td class="goal-table-header"><%= goal.unit %> <%= goal.min_max_nice %> by today</td>
-          <td class="number-with-orange-background"> <%= goal.team_average.round(0)  %> </td>
-          <td class="goal-table-header">team average today</td>
-        </tr>
-      </table>
+  <div class="goal-container" id="container-<%= goal.id%>">
+    <div>
+      <h2 class="challenge-h2">#<%= ind %>: <%= goal.name %></h2>
     </div>
-    <br>
 
-    <div class="goal-user-row">
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home-<%= goal.id%>" role="tabpanel" aria-labelledby="home-tab">
+        <div>
+          <div class="goals-targets-total-day">
+            <div>
+              Final Target:
+              <h2><%= goal.target_amount %></h2>
+              <%= goal.unit %> <%= goal.min_max_nice %>
+            </div>
+            <div>
+              Today's Target:
+              <h2><%= goal.goal_for_the_day.round(0) %></h2>
+              <%= goal.unit %> <%= goal.min_max_nice %>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div style="text-align: center">
+            Your current Score:
+            <h1><%=UserGoal.where(user: current_user, goal: goal)[0].current_amount %></h1>
+            <%= goal.unit %>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="tab-pane fade" id="team_performance-<%= goal.id%>" role="tabpanel" aria-labelledby="profile-tab">
+
+        <% goal.user_goals.sort_by(&:current_amount).reverse.each do |user_goal| %>
+        <div class="progress-row">
+          <div class="progress-left">
+            <%= cl_image_tag user_goal.user.photo.key%>
+          </div>
+          <div class="progress-right">
+            <div class="progress-numbers">
+              <p><b><%= user_goal.current_amount%></b> total</p>
+              <p><b><%= user_goal.current_amount * 100/ user_goal.goal.target_amount%></b> %</p>
+            </div>
+            <div class="progress">
+              <div
+              <% if current_user == user_goal.user %>
+              class="progress-bar bg-warning"
+              <% else %>
+              class="progress-bar"
+              <% end %>
+              role="progressbar"
+              style="width: <%= user_goal.current_amount * 100/ user_goal.goal.target_amount%>%;"
+              aria-valuenow="<%= user_goal.current_amount * 100/ user_goal.goal.target_amount%>"
+              aria-valuemin="0"
+              aria-valuemax="100">
+            </div>
+          </div>
+          </div>
+         </div>
+         <% end %>
+
+
+    </div>
+    <div class="tab-pane fade" id="details-<%= goal.id%>" role="tabpanel" aria-labelledby="contact-tab">
+
       <table style="width:100%">
         <tr class="goal-table-header">
           <td width="33%"></td>
@@ -67,29 +116,59 @@
         </tr>
 
         <% goal.user_goals.sort_by(&:current_amount).reverse.each do |user_goal| %>
-          <tr>
-            <td class="goal-table-user-name">
-              <%= user_goal.user.first_name %>
-            </td>
-            <td class="goal-table-user-current-value">
-              <%= user_goal.current_amount%>
-            </td>
-            <td class="goal-table-user-delta-value">
-                <div class="<%= user_goal.delta_to_target < 0 ? "text-danger" : "text-success"%>"><%= user_goal.delta_to_target.round(0) %></div>
-            </td>
-            <td class="goal-table-user-delta-value">
-              <div class="<%= user_goal.delta_to_team_average < 0 ? "text-danger" : "text-success"%>"><%= user_goal.delta_to_team_average.round(0) %></div>
-            </td>
-          </tr>
+
+        <tr>
+          <td class="goal-table-user-name">
+            <%= user_goal.user.first_name %>
+          </td>
+          <td class="goal-table-user-current-value">
+            <%= user_goal.current_amount%>
+          </td>
+          <td class="goal-table-user-delta-value">
+            <div class="<%= user_goal.delta_to_target < 0 ? "text-danger" : "text-success"%>"><%= user_goal.delta_to_target.round(0) %></div>
+          </td>
+          <td class="goal-table-user-delta-value">
+            <div class="<%= user_goal.delta_to_team_average < 0 ? "text-danger" : "text-success"%>"><%= user_goal.delta_to_team_average.round(0) %></div>
+          </td>
+        </tr>
         <% end %>
       </table>
-    </div class>
-    <br>
-    <div style="text-align: center">
-      <%= link_to "+ 1 #{goal.unit.singularize}", user_goal_plus_one_path(UserGoal.where(user: current_user, goal: goal).first), class: "btn btn-challenge" %>
     </div>
-    </div>
-    <br>
-    <br>
-  <% end %>
+
+
+
+  </div>
+
+  <ul class="nav nav-tabs goal-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home-<%= goal.id%>" role="tab" aria-controls="home" aria-selected="true"></a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="team_performance-tab" data-toggle="tab" href="#team_performance-<%= goal.id%>" role="tab" aria-controls="team_performance" aria-selected="false"></a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="details-tab" data-toggle="tab" href="#details-<%= goal.id%>" role="tab" aria-controls="details" aria-selected="false"></a>
+    </li>
+  </ul>
+
+  <br>
+  <br>
+  <div style="text-align: center">
+    <%= link_to "+ 1 #{goal.unit.singularize}", user_goal_plus_one_path(UserGoal.where(user: current_user, goal: goal).first), class: "btn btn-challenge", remote: true, method: :patch %>
+  </div>
 </div>
+<br>
+<br>
+<% end %>
+
+<%= link_to "Add new goal to challenge", "#", class: "btn btn-primary" %>
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
