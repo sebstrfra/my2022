@@ -15,8 +15,9 @@
   </div>
 
 <div class="container">
+  <h1>Who is already in this challenge:</h1>
   <div class="goals-list">
-    <% @challenge_users.each do |challenge_user| %>
+    <% @challenge_users.where.not(user:current_user).each do |challenge_user| %>
     <div class="challenge-user-friends-container">
       <div class ="btn btn-primary">
         <%= challenge_user.user.full_name %>

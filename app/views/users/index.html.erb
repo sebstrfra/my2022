@@ -24,7 +24,7 @@
             <p><%= user.last_name %></p>
           </div>
           <div class="ghost">
-            <%= button_to "+", user_friendships_create_path(user), class: "btn btn-ghost", method: :post %>
+            <%= button_to "+", user_friendships_create_path(user), class: "btn btn-warning btn-plus", method: :post %>
           </div>
         </div>
       <% end %>
