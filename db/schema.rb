@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_02_104925) do
+ActiveRecord::Schema.define(version: 2021_06_08_202856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2021_06_02_104925) do
     t.bigint "user_id", null: false
     t.bigint "goal_id", null: false
     t.boolean "reached"
-    t.integer "current_amount"
+    t.integer "current_amount", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["goal_id"], name: "index_user_goals_on_goal_id"

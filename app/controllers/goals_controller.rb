@@ -12,6 +12,11 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @goal.challenge = @challenge
     if @goal.save
+      # UserGoal.create(user: user, goal: goal, current_amount: amount)
+      @challenge.users.each do |user|
+        UserGoal.find_or_create_by(goal: @goal, user: user)
+        
+      end
       redirect_to challenge_path(@challenge)
     else
       render :new

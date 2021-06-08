@@ -11,7 +11,9 @@
       <% @users.each do |user| %>
       <%= cl_image_tag user.photo.key %>
       <% end %>
+      <%= link_to new_challenge_challenge_user_path(@challenge) do %>
       <div><i class="fas fa-user-plus"></i></div>
+      <% end %>
     </div>
 
     <div class="challenge-flexbox-center">
@@ -161,7 +163,7 @@
 <br>
 <% end %>
 
-<%= link_to "Add new goal to challenge", "#", class: "btn btn-primary" %>
+<%= link_to "Add new goal to challenge", new_challenge_goal_path(@challenge), class: "btn btn-primary" %>
 
 </div>
 
