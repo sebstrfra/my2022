@@ -1,0 +1,33 @@
+.progress-row {
+  display: flex;
+}
+
+.progress-left {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-right: 10px;
+  margin-left: 10px;
+
+  img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.progress-right {
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.progress-numbers {
+  justify-content: space-between;
+  display: flex;
+  p {
+    font-size: 13px;
+  }
+}
