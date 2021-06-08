@@ -8,9 +8,9 @@
     <%= simple_form_for @challenge do |f| %>
 
       <div class="form-box">
-        <%= f.input :name, label: false, placeholder: "Name" %>
-        <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, label: false, placeholder: "Start Date" %>
-        <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, label: false %>
+        <%= f.input :name, placeholder: "Challenge Name" %>
+        <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, label: "Start Date" %>
+        <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, label: "End Date"%>
       </div>
 
       <div class="btn-container">

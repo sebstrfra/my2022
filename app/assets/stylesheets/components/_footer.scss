@@ -1,3 +1,7 @@
+body {
+  padding-bottom: 100px;
+}
+
 .footer {
   display:flex;
   background: #17496F;
@@ -19,7 +23,7 @@
     height: 40px;
     align-items: center;
     justify-content: space-between;
-    font-size: 24px;
+    font-size: 32px;
     text-decoration: none;
     width: 100%;
 }
