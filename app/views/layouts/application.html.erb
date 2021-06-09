@@ -11,13 +11,21 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+
+  <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <% unless action_name == "home" %>
       <%= render 'shared/navbar' %>
     <% end %>
+
     <%= render 'shared/flashes' %>
 
     <%= yield %>
-    <%= render 'shared/footer' %>
+
+    <% unless action_name == "home" %>
+      <%= render 'shared/footer' %>
+    <% end %>
+
+  <%= render 'shared/flashes' %>
+
   </body>
 </html>
