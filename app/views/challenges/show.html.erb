@@ -103,6 +103,15 @@
           </div>
           </div>
          </div>
+          <% if current_user == user_goal.user && user_goal.current_amount == user_goal.goal.target_amount %>
+          <script>
+          const pyroContainer = document.getElementById("pyro-container");
+          pyroContainer.classList.toggle("pyro-hidden");
+          setTimeout(() => {pyroContainer.classList.toggle("pyro-hidden")}, 5000);
+          </script>
+          <% end %>
+
+
          <% end %>
 
 
@@ -156,7 +165,7 @@
   <br>
   <br>
   <div style="text-align: center">
-    <%= link_to "+ 1 #{goal.unit.singularize}", user_goal_plus_one_path(UserGoal.where(user: current_user, goal: goal).first), class: "btn btn-challenge", remote: true, method: :patch %>
+    <%= link_to "+ 1 #{goal.unit.singularize}", user_goal_plus_one_path(UserGoal.where(user: current_user, goal: goal).first), class: "btn btn-challenge", id: "fireworks-button", remote: true, method: :patch %>
   </div>
 </div>
 <br>
@@ -175,4 +184,10 @@
 <br>
 <br>
 <br>
+
+
+<div class="pyro pyro-hidden" id="pyro-container">
+  <div class="before"></div>
+  <div class="after"></div>
+</div>
 
