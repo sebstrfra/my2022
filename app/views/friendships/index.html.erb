@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Friends</h1>
+  <h1>My Friends</h1>
 
 
   <div class="card-box">
@@ -7,8 +7,8 @@
       <div class="card-product">
         <%= cl_image_tag friend.photo.key %> 
         <div class="card-product-infos">
-          <p><%= friend.first_name %></p>
-          <p><%= friend.last_name %></p>
+          <p class="first-name"><%= friend.first_name %></p>
+          <p class="last-name"><%= friend.last_name %></p>
         </div>
         <div class="ghost">
           <%= button_to "-", friendships_destroy_path(friend), class: "btn btn-primary btn-minus", method: :delete %>
@@ -17,15 +17,15 @@
     <% end %>
   </div>
 
-  <h1>Waiting for confirmation</h1>
+  <h1 class="sub-heading">Waiting for confirmation</h1>
 
   <div class="card-box">
     <% @friends_accepting.each do |friend| %>
       <div class="card-product">
         <%= cl_image_tag friend.photo.key %> 
         <div class="card-product-infos">
-          <p><%= friend.first_name %></p>
-          <p><%= friend.last_name %></p>
+          <p class="first-name"><%= friend.first_name %></p>
+          <p class="last-name"><%= friend.last_name %></p>
         </div>
         <div class="ghost">
           <%= button_to "+", friendships_update_path(friend), class: "btn btn-warning btn-plus", method: :patch %>
@@ -37,8 +37,8 @@
       <div class="card-product">
         <%= cl_image_tag friend.photo.key %> 
         <div class="card-product-infos">
-          <p><%= friend.first_name %></p>
-          <p><%= friend.last_name %></p>
+          <p class="first-name"><%= friend.first_name %></p>
+          <p class="last-name"><%= friend.last_name %></p>
         </div>
         <div class="ghost">
           <%= button_to "-", friendships_destroy_path(friend), class: "btn btn-primary btn-minus", method: :delete %>
