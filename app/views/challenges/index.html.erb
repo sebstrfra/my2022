@@ -7,11 +7,11 @@
         <%= link_to challenge_path(challenge_user.challenge) do %>
           <% if challenge_user.accepted %>
             <div class="challenge-active">
-              <p><%= challenge_user.challenge.name %></p>
+              <p class="white-p"><%= challenge_user.challenge.name %></p>
             </div>
           <% else %>
             <div class="challenge-pending">
-              <p><%= challenge_user.challenge.name %></p>
+              <p class="white-p"><%= challenge_user.challenge.name %></p>
             </div>
           <% end %>
         <% end %>
@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="text-center">
-    <%= link_to "Create", new_challenge_path, class:"btn btn-warning"%>
+    <%= link_to "Create", new_challenge_path, class:"btn btn-primary"%>
   </div>
 
 </div>

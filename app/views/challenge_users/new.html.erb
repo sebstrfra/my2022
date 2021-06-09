@@ -1,27 +1,24 @@
 <div class="container">
-    <h1>Add your Friend</h1>
+    <h1>Add your Friends</h1>
 <% if @friendships.present? %>
     <%= simple_form_for [@challenge, @challenge_user] do |f| %>
       <div class="user">
-        <%= f.association :user, collection: @friends, label_method: :full_name %>
+        <%= f.association :user, collection: @friends, label_method: :full_name, label:"Select a friend" %>
       </div>
       <div class="btn-container">
         <%= f.button :submit, "Add", class: "btn btn-warning" %>
       </div>
     <% end %>
     <% else %>
-      <p>You haven't added any friends to your account yet 😳!</p>
+      <p class="sub-heading">You haven't added any friends to your account yet 😳😳</p>
     <% end %>
   </div>
 
 <div class="container">
-  <h1>Who is already in this challenge:</h1>
+  <h1 class="sub-heading">Who is already in this challenge</h1>
   <div class="goals-list">
     <% @challenge_users.where.not(user:current_user).each do |challenge_user| %>
     <div class="challenge-user-friends-container">
-      <div class ="btn btn-primary">
-        <%= challenge_user.user.full_name %>
-      </div>
       <%= cl_image_tag challenge_user.user.photo.key, class: "avatar" %>
     </div>
     <% end %>
