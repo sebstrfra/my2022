@@ -1,9 +1,14 @@
+body#pages-home {
+    padding-bottom: 0;
+}
+
+
 .landing-page-text {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -100px;
-  margin-bottom: 30px;
+  // margin-top: -100px;
+  // margin-bottom: 30px;
   text-align: center;
 
 }
@@ -13,8 +18,12 @@
 
     background-size: cover;
     background-position: center;
-    padding: 150px 50px;
-    height: 500px;
+    // padding: 150px 50px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
     object-fit: cover;
     background-image: asset-url("landing_page.png");
 
@@ -23,19 +32,23 @@
 .landing-page-testimonials {
   margin-top: 195px;
   text-align: center;
+  display: none;
 }
 
 .landing-page-quote {
   margin-top: 50px;
   text-align: center;
+  display: none;
 }
 
 .join-button {
-  margin-top: 100px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  a {
+    box-shadow: 0px 6px 22px rgba(0, 0, 0, 0.2);
+  }
 }
 
 h3 {
@@ -47,5 +60,20 @@ h4 {
   font-size: 18px;
   font-style: italic;
 }
+
+h5 {
+  color: #235173;
+  text-shadow: 1px 1px 2px white;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 48px;
+  margin: auto;
+  text-align: center;
+  // margin-top: 20px;
+  // margin-bottom: 20px;
+}
+
 
 // Specific CSS for your home-page
