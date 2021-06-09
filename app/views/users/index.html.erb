@@ -20,8 +20,8 @@
         <div class="card-product">
           <%= cl_image_tag user.photo.key %> 
           <div class="card-product-infos">
-            <p><%= user.first_name %></p>
-            <p><%= user.last_name %></p>
+            <p class="first-name"><%= user.first_name %></p>
+            <p class="last-name"><%= user.last_name %></p>
           </div>
           <div class="ghost">
             <%= button_to "+", user_friendships_create_path(user), class: "btn btn-warning btn-plus", method: :post %>
