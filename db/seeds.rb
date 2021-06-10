@@ -97,8 +97,6 @@ friendship1.save!
 friendship1 = Friendship.new(asker_id: jonas.id, receiver_id: marnie.id, status: 1)
 friendship1.save!
 
-friendship1 = Friendship.new(asker_id: jonas.id, receiver_id: soto.id, status: 1)
-friendship1.save!
 
 puts ""
 
@@ -143,20 +141,20 @@ puts ""
 
 puts "*** Now let's see, how everyone is performing... ***"
 
-UserGoal.create(user: jonas, goal: goal1, current_amount: 35)
-UserGoal.create(user: seb, goal: goal1, current_amount: 36)
-UserGoal.create(user: silke, goal: goal1, current_amount: 36)
-UserGoal.create(user: caterina, goal: goal1, current_amount: 36)
+UserGoal.create(user: jonas, goal: goal1, current_amount: 37)
+UserGoal.create(user: seb, goal: goal1, current_amount: 37)
+UserGoal.create(user: silke, goal: goal1, current_amount: 37)
+UserGoal.create(user: caterina, goal: goal1, current_amount: 37)
 
 UserGoal.create(user: jonas, goal: goal2, current_amount: 36)
-UserGoal.create(user: seb, goal: goal2, current_amount: 25)
-UserGoal.create(user: silke, goal: goal2, current_amount: 26)
-UserGoal.create(user: caterina, goal: goal2, current_amount: 27)
+UserGoal.create(user: seb, goal: goal2, current_amount: 27)
+UserGoal.create(user: silke, goal: goal2, current_amount: 29)
+UserGoal.create(user: caterina, goal: goal2, current_amount: 33)
 
-UserGoal.create(user: jonas, goal: goal3, current_amount: 30)
+UserGoal.create(user: jonas, goal: goal3, current_amount: 33)
 UserGoal.create(user: seb, goal: goal3, current_amount: 45)
-UserGoal.create(user: silke, goal: goal3, current_amount: 33)
-UserGoal.create(user: caterina, goal: goal3, current_amount: 32)
+UserGoal.create(user: silke, goal: goal3, current_amount: 35)
+UserGoal.create(user: caterina, goal: goal3, current_amount: 34)
 
 UserGoal.create(user: jonas, goal: goal4, current_amount: 0)
 UserGoal.create(user: seb, goal: goal4, current_amount: 0)
@@ -167,7 +165,7 @@ puts "/// USER PROGRESS TO BE ADDED ///"
 
 puts "** Now let's build a 2nd challenge **"
 
-challenge2 = Challenge.create(name: "Keep it up", description: "Let's make sure to keep crushing what we have learned", start_date: "11.06.2021", end_date: "31.12.2021", user: jonas)
+challenge2 = Challenge.create(name: "Life after bootcamp", description: "Let's make sure to keep crushing what we have learned", start_date: "11.06.2021", end_date: "08.09.2021", user: jonas)
 challenge2.save!
 
 ChallengeUser.create(challenge: challenge2, user: jonas)
