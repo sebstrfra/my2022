@@ -48,8 +48,10 @@
     margin: 0;
     background-color: #F3B64B;
     padding: 0px 5px;
-    border-radius: 5px;
+    border-radius: 6px;
     margin: 0 5px 0 0;
+    height: 45px;
+    width: 60px;
   }
 
 .challenge-h2 {
@@ -98,7 +100,6 @@
 
 .challenge-titel {
   position: relative;
-
 }
 
 .diary_position {
@@ -107,6 +108,11 @@
   // right: 20px;
   width: 30px;
   height: 30px;
+}
+
+.challenge-days-left-details {
+  margin-left: 10px;
+  color: #16496f;
 }
 
 
