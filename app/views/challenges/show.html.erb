@@ -4,7 +4,11 @@
   <div class="challenge-header">
 
     <div class="challenge-titel">
-      <h1><%= @challenge.name %></h1>
+      <h1><%= link_to memories_path do  %>
+      <%= image_tag "diary_entry.png", alt: "Diary Entry Button", class: "diary_position"  %>
+      <% end %>
+      <%= @challenge.name %></h1>
+
     </div>
 
     <div class="challenge-user-row">
@@ -23,7 +27,7 @@
       </div>
 
       <div class="challenge-days-left-details">
-        days left until <br> <%= @challenge.end_date.strftime("%b %d, %Y") %>
+        days left until <br> <strong> <%= @challenge.end_date.strftime("%b %d, %Y") %> </strong>
       </div>
 
     </div>
