@@ -32,14 +32,8 @@
   <br>
   <br>
 
-
-
   <br>
   <br>
-
-
-
-
 
   <% @goals.each.with_index(1) do |goal, ind| %>
 
@@ -51,36 +45,17 @@
 
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home-<%= goal.id%>" role="tabpanel" aria-labelledby="home-tab">
-        <div>
-          <div class="goals-targets-total-day">
-            <div>
-              Final Target:
-              <h2><%= goal.target_amount %></h2>
-              <%= goal.unit %> <%= goal.min_max_nice %>
-            </div>
-            <div>
-              Today's Target:
-              <h2><%= goal.goal_for_the_day.round(0) %></h2>
-              <%= goal.unit %> <%= goal.min_max_nice %>
-            </div>
-          </div>
-          <br>
-          <br>
-          <div style="text-align: center">
-            Your current Score:
-            <h1><%=UserGoal.where(user: current_user, goal: goal)[0].current_amount %></h1>
-            <%= goal.unit %>
-          </div>
-
-        </div>
-
-      </div>
-      <div class="tab-pane fade" id="team_performance-<%= goal.id%>" role="tabpanel" aria-labelledby="profile-tab">
 
         <% goal.user_goals.sort_by(&:current_amount).reverse.each do |user_goal| %>
         <div class="progress-row">
           <div class="progress-left">
             <%= cl_image_tag user_goal.user.photo.key%>
+            <% if user_goal.current_amount >= user_goal.goal.target_amount %>
+            <div class="crown">
+              <%= image_tag("crown.png") %>
+            </div>
+
+            <% end %>
           </div>
           <div class="progress-right">
             <div class="progress-numbers">
@@ -115,15 +90,16 @@
          <% end %>
 
 
-    </div>
+      </div>
+
     <div class="tab-pane fade" id="details-<%= goal.id%>" role="tabpanel" aria-labelledby="contact-tab">
 
       <table style="width:100%">
         <tr class="goal-table-header">
           <td width="33%"></td>
           <td>Current Amount</td>
-          <td>Δ target for today</td>
-          <td>Δ team average</td>
+          <td>vs. today's target</td>
+          <td>vs. team average</td>
         </tr>
 
         <% goal.user_goals.sort_by(&:current_amount).reverse.each do |user_goal| %>
@@ -154,9 +130,7 @@
     <li class="nav-item" role="presentation">
       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home-<%= goal.id%>" role="tab" aria-controls="home" aria-selected="true"></a>
     </li>
-    <li class="nav-item" role="presentation">
-      <a class="nav-link" id="team_performance-tab" data-toggle="tab" href="#team_performance-<%= goal.id%>" role="tab" aria-controls="team_performance" aria-selected="false"></a>
-    </li>
+
     <li class="nav-item" role="presentation">
       <a class="nav-link" id="details-tab" data-toggle="tab" href="#details-<%= goal.id%>" role="tab" aria-controls="details" aria-selected="false"></a>
     </li>
