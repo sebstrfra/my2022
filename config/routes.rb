@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     patch :plus_one
   end
 
+  get "memories", to: "memories#index"
 
 end
