@@ -119,21 +119,21 @@ puts ""
 
 puts "** Now let's add some GOALS to the challenge << #{challenge1.name} >>**"
 
-goal1 = Goal.new(challenge: challenge1, name: "Don't forget your flashcards", target_amount: 36, unit: "day", goal_type: :min_amount)
+goal1 = Goal.new(challenge: challenge1, name: "Flashcard Practice", target_amount: 36, unit: "days", goal_type: :min_amount)
 goal1.save!
 puts "The goal << #{goal1.name} (#{goal1.goal_type} #{goal1.target_amount} #{goal1.unit}) >> was added to the challenge."
 
 # add minmax
 
-goal2 = Goal.new(challenge: challenge1, name: "Excercise three times per week", target_amount: 27, unit: "day", goal_type: :min_amount)
+goal2 = Goal.new(challenge: challenge1, name: "Do sports", target_amount: 27, unit: "Sport Sessions", goal_type: :min_amount)
 goal2.save!
 puts "The goal << #{goal2.name} (#{goal2.goal_type} #{goal2.target_amount} #{goal2.unit}) >> was added to the challenge."
 
-goal3 = Goal.new(challenge: challenge1, name: "Meet new people", target_amount: 32, unit: "people", goal_type: :min_amount)
+goal3 = Goal.new(challenge: challenge1, name: "Meet new people", target_amount: 32, unit: "new Person", goal_type: :min_amount)
 goal3.save!
 puts "The goal << #{goal3.name} (#{goal3.goal_type} #{goal3.target_amount} #{goal3.unit}) >> was added to the challenge."
 
-goal4 = Goal.new(challenge: challenge1, name: "Rock the demo day", target_amount: 1, unit: "demo day", goal_type: :min_amount)
+goal4 = Goal.new(challenge: challenge1, name: "Rock the demo day", target_amount: 1, unit: "Demo Day rocked", goal_type: :min_amount)
 goal4.save!
 puts "The goal << #{goal4.name} (#{goal4.goal_type} #{goal4.target_amount} #{goal4.unit}) >> was added to the challenge."
 
@@ -142,19 +142,19 @@ puts ""
 puts "*** Now let's see, how everyone is performing... ***"
 
 UserGoal.create(user: jonas, goal: goal1, current_amount: 37)
-UserGoal.create(user: seb, goal: goal1, current_amount: 37)
-UserGoal.create(user: silke, goal: goal1, current_amount: 37)
-UserGoal.create(user: caterina, goal: goal1, current_amount: 37)
+UserGoal.create(user: seb, goal: goal1, current_amount: 20)
+UserGoal.create(user: silke, goal: goal1, current_amount: 32)
+UserGoal.create(user: caterina, goal: goal1, current_amount: 25)
 
-UserGoal.create(user: jonas, goal: goal2, current_amount: 36)
-UserGoal.create(user: seb, goal: goal2, current_amount: 27)
-UserGoal.create(user: silke, goal: goal2, current_amount: 29)
-UserGoal.create(user: caterina, goal: goal2, current_amount: 33)
+UserGoal.create(user: jonas, goal: goal2, current_amount: 20)
+UserGoal.create(user: seb, goal: goal2, current_amount: 12)
+UserGoal.create(user: silke, goal: goal2, current_amount: 33)
+UserGoal.create(user: caterina, goal: goal2, current_amount: 37)
 
-UserGoal.create(user: jonas, goal: goal3, current_amount: 33)
+UserGoal.create(user: jonas, goal: goal3, current_amount: 15)
 UserGoal.create(user: seb, goal: goal3, current_amount: 45)
 UserGoal.create(user: silke, goal: goal3, current_amount: 35)
-UserGoal.create(user: caterina, goal: goal3, current_amount: 34)
+UserGoal.create(user: caterina, goal: goal3, current_amount: 25)
 
 UserGoal.create(user: jonas, goal: goal4, current_amount: 0)
 UserGoal.create(user: seb, goal: goal4, current_amount: 0)
@@ -169,16 +169,20 @@ challenge2 = Challenge.create(name: "Life after bootcamp", description: "Let's m
 challenge2.save!
 
 ChallengeUser.create(challenge: challenge2, user: jonas)
+ChallengeUser.create(challenge: challenge2, user: marnie)
 
+goal21 = Goal.new(challenge: challenge2, name: "Revise Lectures", target_amount: 25, unit: "Lectures", goal_type: :min_amount)
+goal21.save!
+puts "The goal << #{goal21.name} (#{goal21.goal_type} #{goal2.target_amount} #{goal21.unit}) >> was added to the challenge."
 
+goal22 = Goal.new(challenge: challenge2, name: "Play CSS Codewars", target_amount: 50, unit: "Hours", goal_type: :min_amount)
+goal22.save!
+puts "The goal << #{goal22.name} (#{goal22.goal_type} #{goal2.target_amount} #{goal22.unit}) >> was added to the challenge."
 
+puts "*** Now let's see, how everyone is performing... ***"
 
+UserGoal.create(user: jonas, goal: goal21, current_amount: 0)
+UserGoal.create(user: jonas, goal: goal22, current_amount: 0)
 
-
-
-
-
-
-
-
-
+UserGoal.create(user: marnie, goal: goal21, current_amount: 0)
+UserGoal.create(user: marnie, goal: goal22, current_amount: 0)
