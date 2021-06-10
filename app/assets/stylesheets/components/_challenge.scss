@@ -10,13 +10,14 @@
   justify-content: center;
   flex-wrap: wrap;
   margin: 15px 0px;
-  gap: 10px;
+  // gap: 10px;
 
   img {
     height: 50px;
     width: 50px;
     object-fit: cover;
     border-radius: 50%;
+    margin: 10px 10px;
   }
 
   div {
@@ -30,6 +31,10 @@
     font-size: 20px;
     color: lightgrey;
     border-color: lightgrey;
+  }
+
+  a {
+    margin: 10px 10px;
   }
 }
 
@@ -93,6 +98,21 @@
     &.active {
       background-color: #16496f;
     }
+  }
+}
+
+.crown {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 5px;
+  left: 15px;
+
+
+  img {
+  margin: 0;
+  max-height: 30px;
+  max-width: 30px;
   }
 }
 
