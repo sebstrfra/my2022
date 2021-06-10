@@ -157,9 +157,9 @@ UserGoal.create(user: silke, goal: goal3, current_amount: 35)
 UserGoal.create(user: caterina, goal: goal3, current_amount: 25)
 
 UserGoal.create(user: jonas, goal: goal4, current_amount: 0)
-UserGoal.create(user: seb, goal: goal4, current_amount: 0)
-UserGoal.create(user: silke, goal: goal4, current_amount: 0)
-UserGoal.create(user: caterina, goal: goal4, current_amount: 0)
+UserGoal.create(user: seb, goal: goal4, current_amount: 1)
+UserGoal.create(user: silke, goal: goal4, current_amount: 1)
+UserGoal.create(user: caterina, goal: goal4, current_amount: 1)
 
 puts "/// USER PROGRESS TO BE ADDED ///"
 
