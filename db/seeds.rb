@@ -102,7 +102,7 @@ puts ""
 
 puts "** Now let's build a challenge **"
 
-challenge1 = Challenge.new(name: "Surviving the bootcamp", description: "Let's not destroy our bodies tooo much while coding the whole day", start_date: "12.04.2021", end_date: "12.06.2021", user: jonas)
+challenge1 = Challenge.new(name: "Surviving the bootcamp", description: "Let's not destroy our bodies tooo much while coding the whole day", start_date: "12.04.2021", end_date: "13.06.2021", user: jonas)
 challenge1.save!
 puts "The challenge with the fancy name << #{challenge1.name} >> was created by #{challenge1.user.first_name}. It starts at #{challenge1.start_date} and ends at #{challenge1.end_date}."
 
@@ -165,7 +165,7 @@ puts "/// USER PROGRESS TO BE ADDED ///"
 
 puts "** Now let's build a 2nd challenge **"
 
-challenge2 = Challenge.create(name: "Life after bootcamp", description: "Let's make sure to keep crushing what we have learned", start_date: "11.06.2021", end_date: "08.09.2021", user: jonas)
+challenge2 = Challenge.create(name: "Life after bootcamp", description: "Let's make sure to keep crushing what we have learned", start_date: "11.06.2021", end_date: "09.09.2021", user: jonas)
 challenge2.save!
 
 ChallengeUser.create(challenge: challenge2, user: jonas)
